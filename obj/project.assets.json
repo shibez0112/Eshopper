@@ -1828,11 +1828,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NET Learn\\Eshopper\\Eshopper.csproj",
+      "projectUniqueName": "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj",
       "projectName": "Eshopper",
-      "projectPath": "F:\\NET Learn\\Eshopper\\Eshopper.csproj",
+      "projectPath": "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj",
       "packagesPath": "C:\\Users\\Toan Pham\\.nuget\\packages\\",
-      "outputPath": "F:\\NET Learn\\Eshopper\\obj\\",
+      "outputPath": "F:\\Learning\\NET Learn\\Eshopper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Toan Pham\\AppData\\Roaming\\NuGet\\NuGet.Config",
