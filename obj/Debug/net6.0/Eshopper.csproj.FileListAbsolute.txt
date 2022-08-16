@@ -118,3 +118,4 @@ F:\Learning\NET Learn\Eshopper\obj\Debug\net6.0\refint\Eshopper.dll
 F:\Learning\NET Learn\Eshopper\obj\Debug\net6.0\Eshopper.pdb
 F:\Learning\NET Learn\Eshopper\obj\Debug\net6.0\Eshopper.genruntimeconfig.cache
 F:\Learning\NET Learn\Eshopper\obj\Debug\net6.0\ref\Eshopper.dll
+F:\Learning\NET Learn\Eshopper\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
