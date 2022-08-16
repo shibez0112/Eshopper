@@ -1,10 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace Eshopper.Models.ViewModels
 {
-    public class LoginModel
+    public class RegisterModel
     {
         [Required]
-        public string? Name { get; set; }
+        public string? UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string? Email { get; set; }
+
         [Required]
         public string? Password { get; set; }
     }

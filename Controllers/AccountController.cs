@@ -14,13 +14,25 @@ namespace Eshopper.Controllers
             userManager = userMgr;
             signInManager = signInMgr;
         }
-        public ViewResult Login(string returnUrl)
+        public ViewResult Login()
         {
             return View(new LoginModel
             {
-                ReturnUrl = returnUrl
             });
         }
+
+        public ViewResult Register()
+        {
+            return View(new RegisterModel
+            {
+            });
+        }
+
+        public ViewResult AccessDenied()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
@@ -35,13 +47,40 @@ namespace Eshopper.Controllers
                     if ((await signInManager.PasswordSignInAsync(user,
                     loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin");
+                        if (await userManager.IsInRoleAsync(user, "Admin")) {
+                            return Redirect("/admin");
+                        }
+
+                        return Redirect("/");
                     }
                 }
                 ModelState.AddModelError("", "Invalid name or password");
             }
             return View(loginModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterModel registerModel)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityUser user =
+                    new IdentityUser { UserName = registerModel.UserName, Email = registerModel.Email };
+                await userManager.CreateAsync(user, registerModel.Password);
+                IdentityResult result = await userManager.AddToRoleAsync(user, "User");
+                if (result.Succeeded)
+                {
+                    return Redirect("/Account/Login");
+                }
+                foreach (IdentityError err in result.Errors)
+                {
+                    ModelState.AddModelError("", err.Description);
+                }
+            }
+            return View(registerModel);
+        }
+
         [Authorize]
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {

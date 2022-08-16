@@ -13,7 +13,7 @@
 </table>
 @functions {
 
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class IdentityUsersModel : PageModel
     {
         private UserManager<IdentityUser> userManager;

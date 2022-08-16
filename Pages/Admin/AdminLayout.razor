@@ -1,36 +1,138 @@
 ﻿@inherits LayoutComponentBase
-<div class="bg-info text-white p-2">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eshopper</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/lib/bootstrap/css/style.css" rel="stylesheet">
+
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <span class="navbar-brand ml-2">Eshopper Administration</span>
+        <div class="row bg-secondary py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark" href="">FAQs</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Help</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Support</a>
+                </div>
             </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-dark pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-4 px-xl-5">
+            <div class="col-lg-10 d-lg-block">
+                <a class="text-decoration-none" asp-action="Index" asp-controller="Home" asp-route-category="">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper Administration</h1>
+                </a>
+            </div>
+
             <div class="col-2 text-right">
                 <a class="btn btn-sm btn-primary" href="/account/logout">Log Out</a>
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid">
-    <div class="row p-2">
-        <div class="col-3">
-            <div class="d-grid gap-1">
-                <NavLink class="btn btn-outline-primary"
-                         href="/admin/products"
-                         ActiveClass="btn-primary text-white"
-                         Match="NavLinkMatch.Prefix">
-                    Products
-                </NavLink>
-                <NavLink class="btn btn-outline-primary"
-                         href="/admin/orders"
-                         ActiveClass="btn-primary text-white"
-                         Match="NavLinkMatch.Prefix">
-                    Orders
-                </NavLink>
+    <!-- Topbar End -->
+
+    <div class="container-fluid">
+        <div class="row p-2">
+            <div class="col-3">
+                <div class="d-grid gap-1">
+                    <NavLink class="btn btn-outline-primary"
+                             href="/admin/products"
+                             ActiveClass="btn-primary text-white"
+                             Match="NavLinkMatch.Prefix">
+                        Products
+                    </NavLink>
+                    <NavLink class="btn btn-outline-primary"
+                             href="/admin/orders"
+                             ActiveClass="btn-primary text-white"
+                             Match="NavLinkMatch.Prefix">
+                        Orders
+                    </NavLink>
+                </div>
+            </div>
+            <div class="col">
+                @Body
             </div>
         </div>
-        <div class="col">
-            @Body
-        </div>
     </div>
-</div>
+
+</body>
+</html>
+
+
+
+@*<div class="bg-info text-white p-2">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col">
+    <span class="navbar-brand ml-2">Eshopper Administration</span>
+    </div>
+    <div class="col-2 text-right">
+    <a class="btn btn-sm btn-primary" href="/account/logout">Log Out</a>
+    </div>
+    </div>
+    </div>
+    </div>*@
+@*<div class="container-fluid">
+    <div class="row p-2">
+    <div class="col-3">
+    <div class="d-grid gap-1">
+    <NavLink class="btn btn-outline-primary"
+    href="/admin/products"
+    ActiveClass="btn-primary text-white"
+    Match="NavLinkMatch.Prefix">
+    Products
+    </NavLink>
+    <NavLink class="btn btn-outline-primary"
+    href="/admin/orders"
+    ActiveClass="btn-primary text-white"
+    Match="NavLinkMatch.Prefix">
+    Orders
+    </NavLink>
+    </div>
+    </div>
+    <div class="col">
+    @Body
+    </div>
+    </div>
+    </div>*@

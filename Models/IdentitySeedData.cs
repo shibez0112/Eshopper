@@ -15,6 +15,12 @@ namespace Eshopper.Models
             {
                 context.Database.Migrate();
             }
+
+            RoleManager<IdentityRole> roleManager = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("User"));
+
+
             UserManager<IdentityUser> userManager = app.ApplicationServices
             .CreateScope().ServiceProvider
             .GetRequiredService<UserManager<IdentityUser>>();
@@ -25,7 +31,9 @@ namespace Eshopper.Models
                 user.Email = "admin@example.com";
                 user.PhoneNumber = "555-1234";
                 await userManager.CreateAsync(user, adminPassword);
+                await userManager.AddToRoleAsync(user, "Admin");
             }
+            
         }
     }
 }

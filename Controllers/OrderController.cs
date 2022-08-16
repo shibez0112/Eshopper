@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Eshopper.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Eshopper.Controllers
 {
     public class OrderController : Controller
@@ -11,8 +13,10 @@ namespace Eshopper.Controllers
             repository = repoService;
             cart = cartService;
         }
+        [Authorize(Roles = "User")]
         public ViewResult Checkout() => View(new Order());
 
+        [Authorize(Roles ="User")]
         [HttpPost]
         public IActionResult Checkout(Order order)
         {

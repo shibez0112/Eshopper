@@ -1,8 +1,4 @@
-﻿@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -66,47 +62,12 @@
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
             </div>
-            <div class="col-lg-6 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div class="col-lg-2 d-lg-block text-center">
-                    <b>Hello @User.Identity.Name</b>
-                    &nbsp&nbsp
-                    <a href="/account/logout" class="text-decoration-none ">Logout</a>
-                </div>
-            }
-            else
-            {
-                <div class="col-lg-2 d-lg-block text-center">
-                    <a href="/account/login" class="text-decoration-none ">Login</a>
-                    &nbsp&nbsp
-                    <a href="/account/legister" class="text-decoration-none ">Register</a>
-                </div>
-            }
-
-            <div class="col-lg-1 col-6 text-right">
-                <vc:cart-summary />
-            </div>
         </div>
     </div>
     <!-- Topbar End -->
 
     <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            <vc:navigation-menu />
-        </div>
-        <div class="col-9">
+        <div class="col-12">
             @RenderBody()
         </div>
     </div>
