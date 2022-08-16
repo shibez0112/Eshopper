@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Eshopper.Infrastructure;
 using Eshopper.Models;
-namespace SportsStore.Pages
+namespace Eshopper.Pages
 {
     public class CartModel : PageModel
     {
@@ -29,6 +29,8 @@ namespace SportsStore.Pages
             }
             return RedirectToPage(new { returnUrl = returnUrl });
         }
+
+
         public IActionResult OnPostRemove(long productId, string returnUrl)
         {
             Cart.RemoveLine(Cart.Lines.First(cl =>

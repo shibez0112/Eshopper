@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eshopper.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20220808133632_Orders")]
-    partial class Orders
+    [Migration("20220816021133_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,9 @@ namespace Eshopper.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Shipped")
+                        .HasColumnType("bit");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,9 +120,6 @@ namespace Eshopper.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(8,2)");
-
-                    b.Property<decimal>("Stock")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductID");
 

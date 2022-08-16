@@ -20,6 +20,7 @@ namespace Eshopper.Models
             base.AddItem(product, quantity);
             Session?.SetJson("Cart", this);
         }
+
         public override void RemoveLine(Product product)
         {
             base.RemoveLine(product);

@@ -81,6 +81,9 @@ namespace Eshopper.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Shipped")
+                        .HasColumnType("bit");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -115,9 +118,6 @@ namespace Eshopper.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(8,2)");
-
-                    b.Property<decimal>("Stock")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductID");
 
