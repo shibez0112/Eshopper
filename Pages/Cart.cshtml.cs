@@ -19,13 +19,25 @@ namespace Eshopper.Pages
             ReturnUrl = returnUrl ?? "/";
             //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
-        public IActionResult OnPost(long productId, string returnUrl)
+        public IActionResult OnPost(long productId, string returnUrl, int quantity)
         {
             Product? product = repository.Products
             .FirstOrDefault(p => p.ProductID == productId);
             if (product != null)
             {
-                Cart.AddItem(product, 1);
+                if (quantity > 1)
+                {
+                    Cart.SetQuantityItem(product, quantity);
+                }
+                else if (quantity == 1) 
+                {
+                    Cart.AddItem(product, 1);
+                }
+                else
+                {
+                    Cart.RemoveItem(product, quantity);
+                }
+                
             }
             return RedirectToPage(new { returnUrl = returnUrl });
         }

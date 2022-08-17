@@ -21,6 +21,18 @@ namespace Eshopper.Models
             Session?.SetJson("Cart", this);
         }
 
+        public override void RemoveItem(Product product, int quantity)
+        {
+            base.RemoveItem(product, quantity);
+            Session?.SetJson("Cart", this);
+        }
+
+        public override void SetQuantityItem(Product product, int quantity) 
+        {
+            base.SetQuantityItem(product, quantity);
+            Session?.SetJson("Cart", this);
+        }
+
         public override void RemoveLine(Product product)
         {
             base.RemoveLine(product);
