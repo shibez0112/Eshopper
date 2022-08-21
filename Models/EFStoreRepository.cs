@@ -1,11 +1,15 @@
-﻿namespace Eshopper.Models
+﻿
+
+namespace Eshopper.Models
 {
     public class EFStoreRepository : IStoreRepository
     {
         private StoreDbContext context;
-        public EFStoreRepository(StoreDbContext ctx)
+        private IWebHostEnvironment environment;
+        public EFStoreRepository(StoreDbContext ctx, IWebHostEnvironment env)
         {
             context = ctx;
+            environment = env;
         }
         public IQueryable<Product> Products => context.Products;
 
@@ -16,6 +20,11 @@
         }
         public void DeleteProduct(Product p)
         {
+            var fullPath = $"{environment.WebRootPath}\\{p.Image}";
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
             context.Remove(p);
             context.SaveChanges();
         }

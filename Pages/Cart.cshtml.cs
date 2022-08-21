@@ -25,19 +25,25 @@ namespace Eshopper.Pages
             .FirstOrDefault(p => p.ProductID == productId);
             if (product != null)
             {
-                if (quantity > 1)
+                if (quantity > -1)
                 {
-                    Cart.SetQuantityItem(product, quantity);
-                }
-                else if (quantity == 1) 
-                {
-                    Cart.AddItem(product, 1);
+                    Cart.AddItem(product, quantity);
                 }
                 else
                 {
-                    Cart.RemoveItem(product, quantity);
+                    Cart.RemoveItem(product, -quantity);
                 }
-                
+
+            }
+            return RedirectToPage(new { returnUrl = returnUrl });
+        }
+
+        public IActionResult OnPostSet(long productId, string returnUrl, int quantity) {
+            Product? product = repository.Products
+            .FirstOrDefault(p => p.ProductID == productId);
+            if (product != null)
+            {
+                    Cart.SetQuantityItem(product, quantity);
             }
             return RedirectToPage(new { returnUrl = returnUrl });
         }

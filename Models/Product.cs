@@ -22,5 +22,7 @@ namespace Eshopper.Models
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; } = String.Empty;
 
+        public string Image { get; set; } = String.Empty;
+
     }
 }

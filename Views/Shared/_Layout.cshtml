@@ -81,7 +81,7 @@
             @if (SignInManager.IsSignedIn(User))
             {
                 <div class="col-lg-2 d-lg-block text-center">
-                    <b>Hello @User.Identity.Name</b>
+                    <b>Hello @User.Identity?.Name</b>
                     &nbsp&nbsp
                     <a href="/account/logout" class="text-decoration-none ">Logout</a>
                 </div>
@@ -91,7 +91,7 @@
                 <div class="col-lg-2 d-lg-block text-center">
                     <a href="/account/login" class="text-decoration-none ">Login</a>
                     &nbsp&nbsp
-                    <a href="/account/legister" class="text-decoration-none ">Register</a>
+                    <a href="/account/register" class="text-decoration-none ">Register</a>
                 </div>
             }
 

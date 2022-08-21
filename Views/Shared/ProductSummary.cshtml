@@ -1,29 +1,58 @@
 ﻿@model Product
-<div class="card card-outline-primary m-1 p-1">
+@*<div class="card card-outline-primary m-1 p-1">
     <div class="bg-faded p-1">
-        <h4>
-            @Model?.Name
-            <span class="badge rounded-pill bg-primary text-white"
-                  style="float:right">
-                <small>@Model?.Price.ToString("c")</small>
-            </span>
-        </h4>
+    <h4>
+    @Model?.Name
+    <span class="badge rounded-pill bg-primary text-white"
+    style="float:right">
+    <small>@Model?.Price.ToString("c")</small>
+    </span>
+    </h4>
     </div>
     <form id="@Model?.ProductID" asp-page="/Cart" method="post">
-        <input type="hidden" asp-for="ProductID" />
-        <input type= "hidden" name = "quantity" value = 1 />
-        <input type="hidden" name="returnUrl"
-               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-        <span class="card-text p-1">
-            @Model?.Description
-            
-            <button type="submit"
-                    class="btn btn-sm text-dark p-0" style="float:right"> 
-                    <i class="fas fa-shopping-cart text-primary mr-1"></i>
-                Add To Cart
-            </button>
+    <input type="hidden" asp-for="ProductID" />
+    <input type="hidden" name="quantity" value=1 />
+    <input type="hidden" name="returnUrl"
+    value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+    <span class="card-text p-1">
+    @Model?.Description
 
-        
-        </span>
+    <button type="submit"
+    class="btn btn-sm text-dark p-0" style="float:right">
+    <i class="fas fa-shopping-cart text-primary mr-1"></i>
+    Add To Cart
+    </button>
+
+
+    </span>
     </form>
+    </div>*@
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+    <div class="card product-item border-0 mb-4">
+        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+            <img class="img-fluid w-100" src="/@Model.Image" alt="">
+        </div>
+        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+            <h6 class="text-truncate mb-3">@Model?.Name</h6>
+            <div class="d-flex justify-content-center">
+                <h6>@Model?.Price.ToString("c")</h6>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between bg-light border">
+            <a asp-page="/Detail" asp-route-id="@Model?.ProductID" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+            <form id="@Model?.ProductID" asp-page="/Cart" method="post">
+                <input type="hidden" asp-for="ProductID" />
+                <input type="hidden" name="quantity" value=1 />
+                <input type="hidden" name="returnUrl"
+                       value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit"
+                        class="btn btn-sm text-dark p-0" style="float:right">
+                    <i class="fas fa-shopping-cart text-primary mr-1"></i>
+                    Add To Cart
+                </button>
+            </form>
+        </div>
+    </div>
 </div>

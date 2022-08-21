@@ -1,5 +1,8 @@
 ﻿@page "/admin/products/edit/{id:long}"
 @page "/admin/products/create"
+@using System.IO
+@inject IWebHostEnvironment env
+
 @inherits OwningComponentBase<IStoreRepository>
 <style>
     div.validation-message {
@@ -37,6 +40,11 @@
         <ValidationMessage For="@(() => Product.Price)" />
         <InputNumber class="form-control" @bind-Value="Product.Price" />
     </div>
+    <div class="form-group">
+        <label>Image</label>
+        <InputFile class="form-control" OnChange="OnInputFileChange" multiple/>
+    </div>
+
     <div class="mt-2">
         <button type="submit" class="btn btn-@ThemeColor">Save</button>
         <NavLink class="btn btn-secondary" href="/admin/products">Cancel</NavLink>
@@ -49,6 +57,7 @@
     [Parameter]
     public long Id { get; set; } = 0;
     public Product Product { get; set; } = new Product();
+    IReadOnlyList<IBrowserFile>? selectedFiles;
     protected override void OnParametersSet()
     {
         if (Id != 0)
@@ -57,14 +66,29 @@
             ?? new();
         }
     }
-    public void SaveProduct()
+    public async void SaveProduct()
     {
+        string fileName = String.Empty;
+        foreach (var file in selectedFiles)
+        {
+            Stream stream = file.OpenReadStream();
+            var path = $"{env.WebRootPath}\\img\\{file.Name}";
+            fileName = $"img\\{file.Name}";
+            FileStream fs = File.Create(path);
+            await stream.CopyToAsync(fs);
+            stream.Close();
+            fs.Close();
+        }
+        this.StateHasChanged();
+
         if (Id == 0)
         {
+            Product.Image = fileName;
             Repository.CreateProduct(Product);
         }
         else
         {
+            Product.Image = fileName;
             Repository.SaveProduct(Product);
         }
 
@@ -72,4 +96,10 @@
     }
     public string ThemeColor => Id == 0 ? "primary" : "warning";
     public string TitleText => Id == 0 ? "Create" : "Edit";
+
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        selectedFiles = e.GetMultipleFiles();
+        this.StateHasChanged();
+    }
 }

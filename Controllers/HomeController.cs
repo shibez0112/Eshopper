@@ -6,7 +6,7 @@ namespace Eshopper.Controllers
     public class HomeController : Controller
     {
         private IStoreRepository repository;
-        public int PageSize = 4;
+        public int PageSize = 6;
         public HomeController(IStoreRepository repo)
         {
             repository = repo;
