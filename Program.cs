@@ -29,6 +29,15 @@ builder.Configuration["ConnectionStrings:IdentityConnection"]));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<AppIdentityDbContext>();
 
+//builder.Services.Configure<IdentityOptions>(options =>
+//{
+//    // Default User settings.
+//    options.User.AllowedUserNameCharacters =
+//            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+//    options.User.RequireUniqueEmail = true;
+
+//});
+
 
 var app = builder.Build();
 

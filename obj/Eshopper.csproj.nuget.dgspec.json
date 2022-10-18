@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj": {}
+    "F:\\Learning\\NET Learn\\EshopperSln\\Eshopper\\Eshopper.csproj": {}
   },
   "projects": {
-    "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj": {
+    "F:\\Learning\\NET Learn\\EshopperSln\\Eshopper\\Eshopper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj",
+        "projectUniqueName": "F:\\Learning\\NET Learn\\EshopperSln\\Eshopper\\Eshopper.csproj",
         "projectName": "Eshopper",
-        "projectPath": "F:\\Learning\\NET Learn\\Eshopper\\Eshopper.csproj",
+        "projectPath": "F:\\Learning\\NET Learn\\EshopperSln\\Eshopper\\Eshopper.csproj",
         "packagesPath": "C:\\Users\\Toan Pham\\.nuget\\packages\\",
-        "outputPath": "F:\\Learning\\NET Learn\\Eshopper\\obj\\",
+        "outputPath": "F:\\Learning\\NET Learn\\EshopperSln\\Eshopper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Toan Pham\\AppData\\Roaming\\NuGet\\NuGet.Config",
